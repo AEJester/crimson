@@ -1,0 +1,30 @@
+{
+  "name": "crimson",
+  "version": "1.0.0",
+  "description": "A programming language with the compiler written in javascript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AEJester/crimson.git"
+  },
+  "keywords": [
+    "language",
+    "crimson"
+  ],
+  "author": "AEJester",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AEJester/crimson/issues"
+  },
+  "homepage": "https://github.com/AEJester/crimson#readme",
+  "bin": {
+    "crimson": "./index.js"
+  },
+  "dependencies": {
+    "commander": "^2.15.1",
+    "fs": "0.0.1-security"
+  }
+}
