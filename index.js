@@ -13,4 +13,9 @@ program
     run(path);
 })
 
+program
+.command("debug <path>")
+.alias("d")
+.description("Debugs the code in the file specified. If there are any spaces in the path, replace them with an \"::\"")
+
 program.parse(process.argv)
