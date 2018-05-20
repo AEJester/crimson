@@ -11,23 +11,26 @@ module.exports = (path) => {
         data[i] = data[i].split(" ");
     }
     var file = path.split("/");
-    for (var x = 0; x < data.length; x++){
+    var toss = false;
+    B: for (var x = 0; x < data.length; x++){
         A: for (var i = 0; i < cmds.commands.length; i++) {
             if (data[x][0].toLocaleLowerCase() !== cmds.commands[i]) {
-                console.log("Error on line "+(x+1)+" in file '"+file[file.length-1]+"':\n\n\n'"+data[x][0]+"' is not a valid statement.")
-                return;
+                toss = true;
             } else {
-                break A;
+                toss = false
             }
         }
     }
-
+    if (toss == true) {
+        console.log("Error on line "+(x+1)+" in file '"+file[file.length-1]+"':\n\n\n'"+data[x][0]+"' is not a valid statement.")
+        return;
+    }
     for (var x = 0; x < data.length; x++){
         if (data[x][0].toLocaleLowerCase() == "print") {
             print(data[x]);
         }
         if (data[x][0].toLocaleLowerCase() == "var") {
-            variable(data[x]).add();
+            new variable(data[x]).add();
         }
     }
 
