@@ -1,9 +1,14 @@
+
 var fs = require("fs");
-var cmds = require("./commands.json");
-const print = require("./compile/print");
-const variable = require("./compile/var")
+var cmds = require("../commands.json");
 const { EOL } = require("os");
+function clock(start) {
+    if ( !start ) return process.hrtime();
+    var end = process.hrtime(start);
+    return Math.round((end[0]*1000) + (end[1]/1000000));
+}
 module.exports = (path) => {
+    var start = clock();
     path = path.replace(/::/g, " ");
     var file = path.split("/");
     if ("."+file[file.length-1].split(".")[1] !== ".crm") {
@@ -30,13 +35,6 @@ module.exports = (path) => {
         console.log("Error on line "+(x+1)+" in file '"+file[file.length-1]+"':\n\n\n'"+data[x][0]+"' is not a valid statement.")
         return;
     }
-    for (var x = 0; x < data.length; x++){
-        if (data[x][0].toLocaleLowerCase() == "print") {
-            print(data[x]);
-        }
-        if (data[x][0].toLocaleLowerCase() == "var") {
-            new variable(data[x]).add();
-        }
-    }
-
+    var duration = clock(start);
+    console.log("Test ran successfully! Time taken: \n\n"+duration+"ms\n\nFile tested: \n\n"+file[file.length-1]+"\n\nYour code looks good!")
 }

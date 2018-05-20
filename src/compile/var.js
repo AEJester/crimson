@@ -10,6 +10,12 @@ module.exports = class {
     }
     add() {
         var data = JSON.parse(fs.readFileSync(`${__dirname}/vars.json`, "utf8"));
+        for (var i = 0 ; i < data.vars.length; i++) {
+            if (data.vars[i].name == this.name) {
+                data.vars[i] = {name: this.name, value: this.value};
+                return;
+            }
+        }
         data.vars.push({name: this.name, value: this.value});
         fs.writeFileSync(`${__dirname}/vars.json`, JSON.stringify(data));
     }
