@@ -24,7 +24,6 @@
     "crimson": "./index.js"
   },
   "dependencies": {
-    "commander": "^2.15.1",
-    "fs": "0.0.1-security"
+    "commander": "^2.15.1"
   }
 }
